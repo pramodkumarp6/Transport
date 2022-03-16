@@ -1,6 +1,6 @@
 package com.pramod.transport.app;
 
-import com.pramod.transport.model.DeflaultResponse;
+import com.pramod.transport.model.RegisterResponse;
 import com.pramod.transport.model.LoginResponse;
 
 import retrofit2.Call;
@@ -15,12 +15,12 @@ public interface Api {
 
     @FormUrlEncoded
     @POST("/simple/public/createuser")
-    Call<DeflaultResponse> userRegister(@Field("email")  String email,
+    Call<RegisterResponse> userRegister(@Field("email")  String email,
                                         @Field("password") String password,
                                         @Field("name")String name,
                                         @Field("school")String school);
     @FormUrlEncoded
     @POST("/simple/public/userForget")
-    Call<DeflaultResponse> userForget(@Field("email") String email);
+    Call<RegisterResponse> userForget(@Field("email") String email);
 
 }

@@ -2,7 +2,7 @@ package com.pramod.transport.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DeflaultResponse {
+public class RegisterResponse {
     @SerializedName("error")
     private boolean error;
     @SerializedName("message")
