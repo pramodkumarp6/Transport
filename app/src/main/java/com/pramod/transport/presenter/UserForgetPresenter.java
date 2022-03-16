@@ -1,32 +1,45 @@
 package com.pramod.transport.presenter;
 
-import com.pramod.transport.app.RetrofitClient;
-import com.pramod.transport.model.RegisterResponse;
+import com.pramod.transport.interfaceuser.UserForgetPresenterView;
+import com.pramod.transport.interfaceuser.UserForgetView;
+import com.pramod.transport.model.UserForgetModel;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+public class UserForgetPresenter implements UserForgetPresenterView {
+    private UserForgetView userForgetView;
+    private UserForgetModel userForgetModel;
 
-public class UserForgetPresenter {
+    public UserForgetPresenter(UserForgetView userForgetView) {
+        this.userForgetView = userForgetView;
+    }
 
+    public void UserForget(String email) {
+        userForgetModel = new UserForgetModel(this);
+        userForgetModel.validate(email);
 
-
-
-    public void  UserForget(String email){
-       Call<RegisterResponse> call= RetrofitClient.getInstance().getApi().userForget(email);
-       call.enqueue(new Callback<RegisterResponse>() {
-           @Override
-           public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-
-           }
-
-           @Override
-           public void onFailure(Call<RegisterResponse> call, Throwable t) {
-
-           }
-       });
-   }
+    }
 
 
+    @Override
+    public void onSucess() {
+        userForgetView.onSucess();
 
+    }
+
+    @Override
+    public void onError(String msg) {
+        userForgetView.onError(msg);
+
+    }
+
+    @Override
+    public void onHide() {
+        userForgetView.onHide();
+
+    }
+
+    @Override
+    public void onShow() {
+        userForgetView.onShow();
+
+    }
 }

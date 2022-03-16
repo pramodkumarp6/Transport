@@ -7,12 +7,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.pramod.transport.interfaceuser.LoginView;
 import com.pramod.transport.databinding.ActivityMainBinding;
 import com.pramod.transport.interfaceuser.RegisterView;
 import com.pramod.transport.presenter.RegisterPresenter;
 
-public class RegisterActivity extends AppCompatActivity implements RegisterView {
+public  class RegisterActivity extends AppCompatActivity implements RegisterView {
+
     private ActivityMainBinding mainBinding;
     private RegisterPresenter registerPresenter;
     private ProgressDialog progressDialog;
@@ -34,19 +34,16 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
             String school = mainBinding.school.getText().toString();
 
             registerPresenter = new RegisterPresenter(this);
-            registerPresenter.Register(email,password,name,school);
+            registerPresenter.Register(email, password, name, school);
         });
-
 
 
     }
 
 
-
     @Override
     public void onSucess() {
         Toast.makeText(this, " ", Toast.LENGTH_SHORT).show();
-
 
 
     }
@@ -68,4 +65,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         progressDialog.show();
 
     }
+
+
+
+
 }

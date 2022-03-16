@@ -1,24 +1,25 @@
 package com.pramod.transport;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.pramod.transport.databinding.ActivitySplashBinding;
 
 public class SplashActivity extends AppCompatActivity {
-private ActivitySplashBinding splashBinding;
+    private ActivitySplashBinding splashBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         splashBinding = ActivitySplashBinding.inflate(getLayoutInflater());
-        View view= splashBinding.getRoot();
+        View view = splashBinding.getRoot();
         setContentView(view);
         getSupportActionBar().hide();
 
-        Thread t=new Thread() {
+        Thread t = new Thread() {
             public void run() {
 
                 try {
@@ -26,7 +27,7 @@ private ActivitySplashBinding splashBinding;
                     sleep(1000);
 
 
-                    Intent intent =new Intent(SplashActivity.this,LoginActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
 
@@ -44,5 +45,4 @@ private ActivitySplashBinding splashBinding;
     }
 
 
-
-    }
+}

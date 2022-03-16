@@ -26,7 +26,7 @@ public class RegisterPresenter implements RegisterPreseneterView {
 
     public void Register(String email, String password, String name, String school){
         registerModel = new RegisterModel(this);
-        // Log.e("email",email);
+
         registerModel.validate(email,password,name,school);
 
 
@@ -46,13 +46,13 @@ public class RegisterPresenter implements RegisterPreseneterView {
 
     @Override
     public void onHide() {
-       // registerView.onHide();
+        registerView.onHide();
 
     }
 
     @Override
     public void onShow() {
-      //  registerView.onShow();
+        registerView.onShow();
 
     }
 }
