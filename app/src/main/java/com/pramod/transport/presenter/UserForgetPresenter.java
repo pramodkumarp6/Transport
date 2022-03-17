@@ -2,7 +2,7 @@ package com.pramod.transport.presenter;
 
 import com.pramod.transport.interfaceuser.UserForgetPresenterView;
 import com.pramod.transport.interfaceuser.UserForgetView;
-import com.pramod.transport.model.UserForgetModel;
+import com.pramod.transport.model.userforget.UserForgetModel;
 
 public class UserForgetPresenter implements UserForgetPresenterView {
     private UserForgetView userForgetView;

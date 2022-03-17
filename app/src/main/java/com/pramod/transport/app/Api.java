@@ -1,8 +1,10 @@
 package com.pramod.transport.app;
 
-import com.pramod.transport.model.RegisterResponse;
-import com.pramod.transport.model.LoginResponse;
-import com.pramod.transport.model.UserForgetResponse;
+import com.pramod.transport.dash.fragments.framentmodel.AccountResponse;
+import com.pramod.transport.dash.fragments.framentmodel.PasswordChangeResponse;
+import com.pramod.transport.model.signup.RegisterResponse;
+import com.pramod.transport.model.signin.LoginResponse;
+import com.pramod.transport.model.userforget.UserForgetResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -25,4 +27,7 @@ public interface Api {
     @POST("/simple/public/userForget")
     Call<UserForgetResponse> userForget(@Field("email") String email);
 
+    Call<AccountResponse> accountUpdate();
+
+    Call<PasswordChangeResponse> passwordChange();
 }

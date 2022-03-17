@@ -1,21 +1,8 @@
 package com.pramod.transport.presenter;
 
-import android.util.Log;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.pramod.transport.app.RetrofitClient;
 import com.pramod.transport.interfaceuser.LoginPresenterView;
 import com.pramod.transport.interfaceuser.LoginView;
-import com.pramod.transport.model.LoginModel;
-import com.pramod.transport.model.LoginResponse;
-import com.pramod.transport.model.User;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.pramod.transport.model.signin.LoginModel;
 
 public class LoginPresenter  implements LoginPresenterView {
     private LoginView view;

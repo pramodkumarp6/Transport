@@ -14,8 +14,8 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityProfileBinding = ActivityProfileBinding.inflate(getLayoutInflater());
-
         View view = activityProfileBinding.getRoot();
         setContentView(view);
+        setTitle("Dashobar");
     }
 }
