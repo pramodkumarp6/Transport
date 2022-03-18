@@ -41,8 +41,9 @@ public class LoginModel implements LoginModelView {
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                LoginResponse loginResponse = response.body();
                 loginPresenter.onHide();
+
+                LoginResponse loginResponse = response.body();
                 if (!loginResponse.isError()) {
                     loginPresenter.onSucess();
                     List<User> userList = response.body().getUserList();

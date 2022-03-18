@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.pramod.transport.dash.ProfileActivity;
+import com.pramod.transport.dash.UserDetails;
 import com.pramod.transport.databinding.ActivityLoginBinding;
 import com.pramod.transport.interfaceuser.LoginView;
 import com.pramod.transport.presenter.LoginPresenter;
@@ -21,8 +22,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Please wait...");
+
         loginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = loginBinding.getRoot();
         setContentView(view);
@@ -43,13 +43,14 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             presenter.Login(email, password);
 
         });
-
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait...");
     }
 
 
     @Override
     public void onSucess() {
-        startActivity(new Intent(this, ProfileActivity.class));
+        startActivity(new Intent(this, UserDetails.class));
         finish();
     }
 
@@ -59,14 +60,22 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     }
 
-    @Override
-    public void onHide() {
-        progressDialog.hide();
-    }
+
 
     @Override
     public void onShow() {
         progressDialog.show();
 
     }
+    @Override
+    public void onHide() {
+        progressDialog.hide();
+    }
+    @Override
+    public void onDestry(){
+        super.onDestroy();
+        loginBinding = null;
+
+}
+
 }

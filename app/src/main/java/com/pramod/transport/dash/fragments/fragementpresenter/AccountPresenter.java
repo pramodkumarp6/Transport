@@ -12,27 +12,33 @@ public class AccountPresenter implements AccountPresenterView {
         this.accountView = accountView;
     }
 
-    public void accountUpdate() {
+    public void accountUpdate(String email, String password, String name, String school) {
+        accountModel = new  AccountModel(this);
+        accountModel.validate(email,password,name,school);
 
     }
 
     @Override
     public void onSucess() {
+        accountView.onSucess();
 
     }
 
     @Override
     public void onError(String msg) {
+        accountView.onError(msg);
 
     }
 
     @Override
     public void onHide() {
+        accountView.onHide();
 
     }
 
     @Override
     public void onShow() {
+        accountView.onShow();
 
     }
 

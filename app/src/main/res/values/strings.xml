@@ -18,6 +18,8 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="string_name">Transport</string>
+
 
     <string name="menu_transform">Transform</string>
     <string name="menu_reflow">Reflow</string>
@@ -34,4 +36,23 @@
     <string name="image_view_item_transform_content_description">Represents an image view in the
         item
     </string>
+    <string name="title_activity_user_details">UserDetails</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_transportSystem">Transport System</string>
+
+    <string name="menu_account">Account</string>
+    <string name="menu_passwoword_change">Password Update</string>
+    <string name="menu_location">Location</string>
+    <string name="menu_userDetail">User Detail</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="Button">Email</string>
+    <string name="name">Name</string>
+    <string name="Register_Text">TRANSPORT SYSTEM</string>
+    <string name="Button_Text">Signup</string>
+    <string name="textSize">Signup</string>
+    <string name="edittext_school">School</string>
+    <string name="Button_submit">Update</string>
+
 </resources>

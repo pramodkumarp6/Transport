@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.pramod.transport.dash.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_tansportsystem"
+        android:name="com.pramod.transport.dash.ui.transportsystem.TransportSystemFragment"
+        android:label="@string/menu_transportSystem"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_account"
+        android:name="com.pramod.transport.dash.ui.account.AccountFragment"
+        android:label="@string/menu_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/nav_Password"
+        android:name="com.pramod.transport.dash.ui.passwordchange.PasswordChangeFragment"
+        android:label="@string/menu_passwoword_change"
+        tools:layout="@layout/fragment_password_change" />
+    <fragment
+        android:id="@+id/nav_location"
+        android:name="com.pramod.transport.dash.ui.location.MapsFragment"
+        android:label="@string/menu_location"
+        tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/nav_userDetail"
+        android:name="com.pramod.transport.dash.ui.userDetails.UsersDetailsFragment"
+        android:label="@string/menu_userDetail"
+        tools:layout="@layout/fragment_users_details" />
+</navigation>

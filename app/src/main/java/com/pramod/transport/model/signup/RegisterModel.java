@@ -2,6 +2,8 @@ package com.pramod.transport.model.signup;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pramod.transport.app.RetrofitClient;
@@ -53,21 +55,21 @@ public class RegisterModel implements RegisterModelView {
         Call<RegisterResponse> call = RetrofitClient.getInstance().getApi().userRegister(email,password,name,school);
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
-            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-                RegisterResponse deflaultResponse = response.body();
+            public void onResponse(@NonNull Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                RegisterResponse registerResponse = response.body();
                 registerPresenter.onHide();
-                if(deflaultResponse.isError()){
+                if(registerResponse.isError()){
                    registerPresenter.onSucess();
-                    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                    Log.e("Json", gson.toJson(deflaultResponse));
-                }
+                   // Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                    //Log.e("Json", gson.toJson(deflaultResponse));
+                }else if(!registerResponse.isError())
                  registerPresenter.onError(response.body().getMessage());
                 }
 
 
 
             @Override
-            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<RegisterResponse> call, Throwable t) {
 
 
             }

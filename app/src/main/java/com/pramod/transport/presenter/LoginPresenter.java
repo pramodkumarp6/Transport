@@ -36,15 +36,16 @@ public class LoginPresenter  implements LoginPresenterView {
 
     }
 
-    @Override
-    public void onHide() {
-        view.onHide();
 
-    }
 
     @Override
     public void onShow() {
         view.onShow();
+
+    }
+    @Override
+    public void onHide() {
+        view.onHide();
 
     }
 }

@@ -1,5 +1,7 @@
 package com.pramod.transport.app;
 
+import static com.pramod.transport.app.Url.BASE_URL;
+
 import android.util.Base64;
 
 import java.io.IOException;
@@ -14,13 +16,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
     private static final String AUTH = "Basic " + Base64.encodeToString(("user:123456").getBytes(), Base64.NO_WRAP);
-
-    // private static final String BASE_URL = "http:///restapi/user/public/";
-
-    private static final String BASE_URL = "https://big-name-interviewe.000webhostapp.com";
-
-
-
 
     private static RetrofitClient mInstance;
     private Retrofit retrofit;
@@ -47,7 +42,7 @@ public class RetrofitClient {
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-               // .client(okHttpClient)
+                .client(okHttpClient)
                 .build();
     }
 

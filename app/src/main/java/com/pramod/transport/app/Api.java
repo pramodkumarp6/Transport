@@ -27,7 +27,13 @@ public interface Api {
     @POST("/simple/public/userForget")
     Call<UserForgetResponse> userForget(@Field("email") String email);
 
-    Call<AccountResponse> accountUpdate();
-
-    Call<PasswordChangeResponse> passwordChange();
+    @FormUrlEncoded
+    @POST("/simple/public/userlogin")
+    Call<AccountResponse> accountUpdate(@Field("email") String email,
+                                        @Field("password") String password,
+                                        @Field("name") String name,
+                                        @Field("school") String school);
+    @FormUrlEncoded
+    @POST("/simple/public/userlogin")
+    Call<PasswordChangeResponse> passwordChange(@Field("email") String email, @Field("password") String password);
 }

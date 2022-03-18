@@ -4,15 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.pramod.transport.databinding.ActivitySplashBinding;
 
+
 public class SplashActivity extends AppCompatActivity implements Runnable {
     private ActivitySplashBinding splashBinding;
+    private View view;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@NonNull Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         splashBinding = ActivitySplashBinding.inflate(getLayoutInflater());
         View view = splashBinding.getRoot();

@@ -5,4 +5,7 @@ public interface LoginView {
     void onError(String msg);
     void onHide();
     void onShow();
+
+
+    void onDestry();
 }
