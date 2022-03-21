@@ -56,15 +56,18 @@ public class RegisterModel implements RegisterModelView {
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
             public void onResponse(@NonNull Call<RegisterResponse> call, Response<RegisterResponse> response) {
-                RegisterResponse registerResponse = response.body();
+
                 registerPresenter.onHide();
-                if(registerResponse.isError()){
+                if(response.code()== 201){
+                    RegisterResponse registerResponse = response.body();
+                    registerPresenter.onError("User created successfully");
                    registerPresenter.onSucess();
                    // Gson gson = new GsonBuilder().setPrettyPrinting().create();
                     //Log.e("Json", gson.toJson(deflaultResponse));
-                }else if(!registerResponse.isError())
-                 registerPresenter.onError(response.body().getMessage());
+                }else if(response.code()==422){
+                 registerPresenter.onError("User Already Exist");
                 }
+            }
 
 
 

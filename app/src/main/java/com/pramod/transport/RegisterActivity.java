@@ -24,6 +24,7 @@ public  class RegisterActivity extends AppCompatActivity implements RegisterView
         View view = mainBinding.getRoot();
         setContentView(view);
         setTitle("Register");
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
         mainBinding.registerButton.setOnClickListener(view1 -> {
@@ -56,7 +57,7 @@ public  class RegisterActivity extends AppCompatActivity implements RegisterView
 
     @Override
     public void onHide() {
-        progressDialog.hide();
+        progressDialog.dismiss();
 
     }
 

@@ -9,11 +9,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import com.pramod.transport.dash.fragments.fragementinterface.HomeView;
 import com.pramod.transport.databinding.FragmentHomeBinding;
 
+import java.util.List;
 
-public class HomeFragment extends Fragment  implements HomeView {
+
+public abstract class HomeFragment extends Fragment implements HomeView {
+
 
     private FragmentHomeBinding fragmentHomeBinding;
     private ProgressDialog progressDialog;
@@ -28,7 +33,6 @@ public class HomeFragment extends Fragment  implements HomeView {
 
         return view;
     }
-
 
 
     @Override
@@ -50,9 +54,11 @@ public class HomeFragment extends Fragment  implements HomeView {
     public void onShow() {
 
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         fragmentHomeBinding = null;
     }
+
 }

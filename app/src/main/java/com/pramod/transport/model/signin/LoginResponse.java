@@ -8,7 +8,13 @@ public class LoginResponse {
     private boolean error;
     private String message;
 
-    private List<User> userList;
+    private User user;
+
+    public LoginResponse(boolean error, String message, User user) {
+        this.error = error;
+        this.message = message;
+        this.user = user;
+    }
 
     public boolean isError() {
         return error;
@@ -26,11 +32,11 @@ public class LoginResponse {
         this.message = message;
     }
 
-    public List<User> getUserList() {
-        return userList;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

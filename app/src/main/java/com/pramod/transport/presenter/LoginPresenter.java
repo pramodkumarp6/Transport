@@ -1,8 +1,9 @@
 package com.pramod.transport.presenter;
-
 import com.pramod.transport.interfaceuser.LoginPresenterView;
 import com.pramod.transport.interfaceuser.LoginView;
 import com.pramod.transport.model.signin.LoginModel;
+import com.pramod.transport.model.signin.Users;
+
 
 public class LoginPresenter  implements LoginPresenterView {
     private LoginView view;
@@ -18,15 +19,18 @@ public class LoginPresenter  implements LoginPresenterView {
     public void Login(String email, String password) {
 
              loginModel = new LoginModel(this);
-            // Log.e("email",email);
+
              loginModel.validate(email,password);
 
 }
 
 
+
+
+
     @Override
-    public void onSucess() {
-        view.onSucess();
+    public void onSucess(Users users) {
+         view.onSucess(users);
 
     }
 

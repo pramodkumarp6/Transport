@@ -28,12 +28,12 @@ public interface Api {
     Call<UserForgetResponse> userForget(@Field("email") String email);
 
     @FormUrlEncoded
-    @POST("/simple/public/userlogin")
+    @POST("/simple/public/updateuser{id}")
     Call<AccountResponse> accountUpdate(@Field("email") String email,
                                         @Field("password") String password,
                                         @Field("name") String name,
                                         @Field("school") String school);
     @FormUrlEncoded
-    @POST("/simple/public/userlogin")
+    @POST("/simple/public/updatepassword")
     Call<PasswordChangeResponse> passwordChange(@Field("email") String email, @Field("password") String password);
 }

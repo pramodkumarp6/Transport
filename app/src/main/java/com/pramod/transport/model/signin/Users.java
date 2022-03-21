@@ -1,12 +1,12 @@
 package com.pramod.transport.model.signin;
 
-public class User {
+public class Users {
     private int id;
     private String email;
     private String name;
     private String school;
 
-    public User(int id, String email, String name, String school) {
+    public Users(int id, String email, String name, String school) {
         this.id = id;
         this.email = email;
         this.name = name;
@@ -44,7 +44,4 @@ public class User {
     public void setSchool(String school) {
         this.school = school;
     }
-
-
 }
-
