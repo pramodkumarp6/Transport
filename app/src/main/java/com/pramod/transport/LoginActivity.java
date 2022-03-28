@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.pramod.transport.dash.ProfileActivity;
 import com.pramod.transport.dash.UserDetails;
 import com.pramod.transport.databinding.ActivityLoginBinding;
@@ -24,13 +26,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private LoginPresenter presenter;
     private ProgressDialog progressDialog;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         loginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
-
-       View view = loginBinding.getRoot();
+        View view = loginBinding.getRoot();
         setContentView(view);
         setTitle("Login");
         progressDialog = new ProgressDialog(this);
@@ -48,9 +50,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         });
 
 
-        //loginBinding.buttonLogin.setOnClickListener(view1 -> {
 
-        // });
 
         loginBinding.buttonLogin.setOnClickListener(view1 -> {
             SigIn();
@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
          SharedPrefManager.getInstance(LoginActivity.this).saveUser(users);
 
-        Intent intent = new Intent(new Intent(this, ProfileActivity.class));
+        Intent intent = new Intent(new Intent(this, UserDetails.class));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
@@ -89,8 +89,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void onError(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 
+        Snackbar.make(loginBinding.relative,msg,Snackbar.LENGTH_SHORT).show();
     }
 
 
@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void onDestry() {
         super.onDestroy();
 
-        loginBinding = null;
+        presenter = null;
 
     }
 

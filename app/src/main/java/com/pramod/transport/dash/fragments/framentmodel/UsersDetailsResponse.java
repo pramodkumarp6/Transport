@@ -1,6 +1,5 @@
 package com.pramod.transport.dash.fragments.framentmodel;
 
-import androidx.annotation.NonNull;
 
 public class UsersDetailsResponse {
     private boolean error;

@@ -12,9 +12,9 @@ public class AccountPresenter implements AccountPresenterView {
         this.accountView = accountView;
     }
 
-    public void accountUpdate(String email, String password, String name, String school) {
+    public void accountUpdate(String id, String email, String password, String name, String school) {
         accountModel = new  AccountModel(this);
-        accountModel.validate(email,password,name,school);
+        accountModel.validate(id,email,password,name,school);
 
     }
 

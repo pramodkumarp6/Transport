@@ -1,7 +1,11 @@
 package com.pramod.transport;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -10,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.pramod.transport.databinding.ActivityMainBinding;
 import com.pramod.transport.interfaceuser.RegisterView;
 import com.pramod.transport.presenter.RegisterPresenter;
+
+import java.util.Formatter;
 
 public  class RegisterActivity extends AppCompatActivity implements RegisterView {
 
@@ -33,7 +39,12 @@ public  class RegisterActivity extends AppCompatActivity implements RegisterView
             String password = mainBinding.editTextPassword.getText().toString();
             String name = mainBinding.name.getText().toString();
             String school = mainBinding.school.getText().toString();
-
+            String DeviceId =  Build.DEVICE ;
+            /*WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+            String ipAddress = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+*/
+            String information1 = "Device id = " + Build.DEVICE + "\n" + "Device Model = " + Build.MODEL + "\n";
+               Log.e("DeviceId",DeviceId);
             registerPresenter = new RegisterPresenter(this);
             registerPresenter.Register(email, password, name, school);
         });

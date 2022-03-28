@@ -21,7 +21,6 @@ public class ProfileActivity extends AppCompatActivity {
         setTitle("Dashobar");
 
         User user = SharedPrefManager.getInstance(this).getUser();
-
         activityProfileBinding.id.setText(String.valueOf(user.getId()));
         activityProfileBinding.name.setText(user.getName());
         activityProfileBinding.email.setText(user.getEmail());

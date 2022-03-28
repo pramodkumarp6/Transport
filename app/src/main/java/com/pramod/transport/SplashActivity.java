@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.pramod.transport.databinding.ActivitySplashBinding;
 
 
-public class SplashActivity extends AppCompatActivity implements Runnable {
+public class SplashActivity extends AppCompatActivity  {
     private ActivitySplashBinding splashBinding;
     private View view;
 
@@ -48,8 +48,4 @@ public class SplashActivity extends AppCompatActivity implements Runnable {
 
 
 
-    @Override
-    public void run() {
-
-    }
 }

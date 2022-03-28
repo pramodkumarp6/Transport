@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -32,10 +34,12 @@ public class UserDetails extends AppCompatActivity {
         binding = ActivityUserDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.appBarUserDetails.toolbar);
+        setSupportActionBar(binding.appBarUserDetails.toolbars);
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+        navigationView.setItemIconTintList(null);
+      //
 
 
 
@@ -53,12 +57,22 @@ public class UserDetails extends AppCompatActivity {
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_user_details);
-        //TextView tv = (TextView)navigationView.findViewById(R.id.textViewsubtitle);
-       // tv.setText("Tatatat");
+
+        User user = SharedPrefManager.getInstance(this).getUser();
+
+
+        View hView = navigationView.getHeaderView(0);
+        TextView nav_user = (TextView) hView.findViewById(R.id.textViewtitle);
+        nav_user.setText(user.getName());
+        TextView nav_user1 = (TextView) hView.findViewById(R.id.textViewsubtitle);
+        nav_user1.setText(user.getEmail());
+
+
 
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
 
         NavigationUI.setupWithNavController(navigationView, navController);
+
 
 
 
@@ -95,6 +109,7 @@ public class UserDetails extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_user_details);
+
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
 
                 || super.onSupportNavigateUp();

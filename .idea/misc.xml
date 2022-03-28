@@ -4,6 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/drawable/avatar_1.xml" value="0.121" />
+        <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/drawable/avatar_10.xml" value="0.104" />
+        <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/drawable/avatar_11.xml" value="0.104" />
+        <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/drawable/avatar_12.xml" value="0.104" />
+        <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/drawable/avatar_13.xml" value="0.104" />
+        <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/drawable/avatar_14.xml" value="0.104" />
+        <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/drawable/avatar_15.xml" value="0.104" />
+        <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/drawable/avatar_2.xml" value="0.104" />
+        <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/drawable/avatar_5.xml" value="0.104" />
         <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.121" />
         <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/drawable/round.xml" value="0.106" />
         <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/layout-w1240dp/content_main.xml" value="0.2" />
@@ -20,7 +28,7 @@
         <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/layout/content_user_details.xml" value="0.10989583333333333" />
         <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/layout/fragment_account.xml" value="0.1" />
         <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/layout/fragment_gallery.xml" value="0.25" />
-        <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/layout/fragment_home.xml" value="0.10989583333333333" />
+        <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/layout/fragment_item_list.xml" value="0.1" />
         <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/layout/fragment_login.xml" value="0.10989583333333333" />
         <entry key="..\:/2022App/android_java/java/Transport/app/src/main/res/layout/fragment_maps.xml" value="0.10989583333333333" />

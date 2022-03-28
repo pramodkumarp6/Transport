@@ -29,9 +29,9 @@
         tools:layout="@layout/fragment_password_change" />
     <fragment
         android:id="@+id/nav_location"
-        android:name="com.pramod.transport.dash.ui.location.MapsFragment"
+        android:name="com.pramod.transport.dash.ui.location.PermissionFragment"
         android:label="@string/menu_location"
-        tools:layout="@layout/fragment_maps" />
+        tools:layout="@layout/fragment_permission" />
     <fragment
         android:id="@+id/nav_userDetail"
         android:name="com.pramod.transport.dash.ui.userDetails.UsersDetailsFragment"
