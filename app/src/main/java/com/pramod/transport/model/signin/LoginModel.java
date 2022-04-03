@@ -4,14 +4,16 @@ import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-
 import com.pramod.transport.app.RetrofitClient;
 import com.pramod.transport.interfaceuser.LoginModelView;
 import com.pramod.transport.presenter.LoginPresenter;
 
-import java.util.ArrayList;
-import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,36 +48,44 @@ public class LoginModel implements LoginModelView {
             return;
         }
         loginPresenter.onShow();
-        Call<LoginResponse> call = RetrofitClient.getInstance().getApi().userLogin(email, password);
-        call.enqueue(new Callback<LoginResponse>() {
+        Observable<LoginResponse> observable = RetrofitClient.getInstance().getApi().userLogin(email,password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+        observable.subscribe(new Observer<LoginResponse>() {
             @Override
-            public void onResponse(@NonNull Call<LoginResponse> call, Response<LoginResponse> response) {
-
-                loginPresenter.onHide();
-
-                LoginResponse loginResponse = response.body();
-                if (!loginResponse.isError()) {
-
-                  User user  = loginResponse.getUser();
-                   int  id = user.getId();
-                   String email = user.getEmail();
-                   String name = user.getName();
-                   String school = user.getName();
-
-                   Users users = new Users(id,email,name,school);
-
-                   loginPresenter.onSucess(users);
-
-                } else {
-                    loginPresenter.onError(response.body().getMessage());
-                }
-
+            public void onSubscribe(Disposable d) {
 
             }
 
             @Override
-            public void onFailure(@NonNull Call<LoginResponse> call, Throwable t) {
+            public void onNext(LoginResponse response) {
                 loginPresenter.onHide();
+                LoginResponse loginResponse = response;
+                if (!loginResponse.isError()) {
+
+                    User user  = loginResponse.getUser();
+                    int  id = user.getId();
+                    String email = user.getEmail();
+                    String name = user.getName();
+                    String school = user.getName();
+
+                    Users users = new Users(id,email,name,school);
+
+                    loginPresenter.onSucess(users);
+
+                } else {
+                    loginPresenter.onError(response.getMessage());
+                }
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
 
             }
         });

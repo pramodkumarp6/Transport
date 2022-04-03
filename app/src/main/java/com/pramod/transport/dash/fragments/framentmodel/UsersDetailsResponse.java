@@ -1,9 +1,14 @@
 package com.pramod.transport.dash.fragments.framentmodel;
 
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 public class UsersDetailsResponse {
     private boolean error;
-    private String message;
+    @SerializedName("users")
+    private List<UsersInfoDetails>usersInfoDetails;
 
     public boolean isError() {
         return error;
@@ -13,11 +18,11 @@ public class UsersDetailsResponse {
         this.error = error;
     }
 
-    public String getMessage() {
-        return message;
+    public List<UsersInfoDetails> getUsersInfoDetails() {
+        return usersInfoDetails;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setUsersInfoDetails(List<UsersInfoDetails> usersInfoDetails) {
+        this.usersInfoDetails = usersInfoDetails;
     }
 }

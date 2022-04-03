@@ -12,8 +12,8 @@
         android:orientation="vertical" />
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="150dp"
+        android:layout_width="190dp"
+        android:layout_height="120dp"
         android:layout_marginLeft="100dp"
 
         android:background="@mipmap/ic_launcher"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="120dp"
         android:padding="10dp"
         android:text="@string/Register_Text"
         android:textColor="#9575CD"
@@ -116,12 +116,41 @@
             android:fontFamily="sans-serif"
             android:hint="@string/edittext_school"
             android:importantForAutofill="no"
-
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:padding="10dp"
             android:paddingLeft="5dp"
             android:textColor="@color/purple_500" />
+
+        <Spinner
+            android:id="@+id/country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/round"
+            />
+
+        <Spinner
+            android:id="@+id/state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+
+            android:background="@drawable/round"
+            />
+        <Spinner
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/round"
+            />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            />
 
         <Button
             android:id="@+id/registerButton"
@@ -134,6 +163,8 @@
             android:text="@string/Button_Text"
             android:textColor="@color/white"
             android:textSize="@dimen/textSize" />
+
+
 
 
     </LinearLayout>

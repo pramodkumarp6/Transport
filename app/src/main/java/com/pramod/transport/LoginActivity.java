@@ -104,14 +104,21 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void onHide() {
-        progressDialog.dismiss();
+        progressDialog.cancel();
     }
 
     @Override
     public void onDestry() {
         super.onDestroy();
+        if (! isFinishing()) {
 
-        presenter = null;
+            progressDialog.show();
+
+        }
+
+       /* if ( progressDialog!=null && progressDialog.isShowing() ){
+            progressDialog.cancel();
+        }*/
 
     }
 
