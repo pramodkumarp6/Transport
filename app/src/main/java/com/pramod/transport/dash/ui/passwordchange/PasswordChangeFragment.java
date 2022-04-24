@@ -30,11 +30,12 @@ public class PasswordChangeFragment extends Fragment implements PasswordchangeVi
         View view = passwordChangeBinding.getRoot();
         progressDialog = new ProgressDialog(getActivity());
         passwordChangeBinding.passwordChangeButton.setOnClickListener(view1 -> {
+
+            final String currentpassword = passwordChangeBinding.currentPassword.getText().toString().trim();
+            final String newpassword = passwordChangeBinding.newpassword.getText().toString().trim();
             final String email = passwordChangeBinding.editTextemail.getText().toString().trim();
-            final String password = passwordChangeBinding.changePassword.getText().toString().trim();
-            final String confirmpassword = passwordChangeBinding.confirmPassword.getText().toString().trim();
             passwordChangePresenter = new PasswordChangePresenter(this);
-            passwordChangePresenter.passwordChange(email,password,confirmpassword);
+            passwordChangePresenter.passwordChange(currentpassword,newpassword,email);
 
         });
         progressDialog = new ProgressDialog(getActivity());
@@ -43,8 +44,8 @@ public class PasswordChangeFragment extends Fragment implements PasswordchangeVi
     }
 
     @Override
-    public void onSucess() {
-        Toast.makeText(getActivity(), "Msg", Toast.LENGTH_SHORT).show();
+    public void onSucess(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
 
     }
 

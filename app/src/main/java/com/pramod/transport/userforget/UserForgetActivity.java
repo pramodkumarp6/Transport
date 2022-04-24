@@ -1,4 +1,4 @@
-package com.pramod.transport;
+package com.pramod.transport.userforget;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -7,9 +7,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import com.pramod.transport.databinding.ActivityUserForgetBinding;
 import com.pramod.transport.interfaceuser.UserForgetView;
-import com.pramod.transport.presenter.UserForgetPresenter;
 
 public class UserForgetActivity extends AppCompatActivity implements UserForgetView {
 

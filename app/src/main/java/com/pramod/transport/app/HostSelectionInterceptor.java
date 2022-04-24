@@ -13,7 +13,7 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 
 
-public class HostSelectionInterceptor   {
+public class  HostSelectionInterceptor   {
    /* private volatile HttpUrl host = HttpUrl.parse(BuildConfig.DEVELOPMENT_BASE_URL);
     PreferenceHelper preferenceHelper;
 

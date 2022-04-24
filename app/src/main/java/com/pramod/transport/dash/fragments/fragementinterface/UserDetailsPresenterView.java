@@ -4,7 +4,7 @@ import com.pramod.transport.dash.fragments.framentmodel.UsersInfoDetails;
 
 import java.util.List;
 
-public interface UsersDetailsView {
+public interface UserDetailsPresenterView {
 
     void onSucess(List<UsersInfoDetails> usersInfoDetails);
     void onError(String msg);

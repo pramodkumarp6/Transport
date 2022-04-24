@@ -11,7 +11,5 @@ public interface LoginView {
     void onShow();
 
 
-    void onDestry();
-
 
 }

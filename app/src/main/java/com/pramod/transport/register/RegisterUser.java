@@ -1,20 +1,10 @@
-package com.pramod.transport.dash.fragments.framentmodel;
+package com.pramod.transport.register;
 
-public class UsersInfoDetails {
-    private String id;
+public class RegisterUser {
     private String email;
+    private String password;
     private String name;
     private String school;
-
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;
@@ -22,6 +12,14 @@ public class UsersInfoDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {

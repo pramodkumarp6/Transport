@@ -1,8 +1,9 @@
-package com.pramod.transport.model.userforget;
+package com.pramod.transport.userforget;
 
 import com.pramod.transport.app.RetrofitClient;
 import com.pramod.transport.interfaceuser.UserModelView;
-import com.pramod.transport.presenter.UserForgetPresenter;
+import com.pramod.transport.model.userforget.UserForgetResponse;
+import com.pramod.transport.userforget.UserForgetPresenter;
 
 import retrofit2.Call;
 import retrofit2.Callback;

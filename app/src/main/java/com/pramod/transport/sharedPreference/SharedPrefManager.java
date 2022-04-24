@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.pramod.transport.LoginActivity;
+import com.pramod.transport.login.LoginActivity;
 import com.pramod.transport.model.signin.User;
 import com.pramod.transport.model.signin.Users;
 

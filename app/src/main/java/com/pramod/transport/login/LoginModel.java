@@ -1,12 +1,16 @@
-package com.pramod.transport.model.signin;
+package com.pramod.transport.login;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import com.pramod.transport.app.RetrofitClient;
 import com.pramod.transport.interfaceuser.LoginModelView;
-import com.pramod.transport.presenter.LoginPresenter;
+import com.pramod.transport.login.LoginPresenter;
+import com.pramod.transport.model.signin.LoginResponse;
+import com.pramod.transport.model.signin.User;
+import com.pramod.transport.model.signin.Users;
 
 
 import io.reactivex.Observable;
@@ -14,19 +18,16 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class LoginModel implements LoginModelView {
     private final LoginPresenter loginPresenter;
+    private Context context;
 
     public LoginModel(LoginPresenter loginPresenter, Context context) {
         this.loginPresenter = loginPresenter;
         this.context = context;
     }
 
-    private Context context;
 
 
     public LoginModel(LoginPresenter loginPresenter) {
@@ -36,14 +37,13 @@ public class LoginModel implements LoginModelView {
 
     @Override
     public void validate(@NonNull String email, String password) {
-        Log.d("password", password);
-        Log.d(email, "email");
 
-        if (email.isEmpty()) {
+
+        if (TextUtils.isEmpty(email)) {
             loginPresenter.onError("Enter Email id");
             return;
         }
-        if (password.isEmpty()) {
+        if (TextUtils.isEmpty(password)) {
             loginPresenter.onError("Enter password and id!");
             return;
         }
@@ -60,16 +60,10 @@ public class LoginModel implements LoginModelView {
             @Override
             public void onNext(LoginResponse response) {
                 loginPresenter.onHide();
-                LoginResponse loginResponse = response;
-                if (!loginResponse.isError()) {
-
-                    User user  = loginResponse.getUser();
-                    int  id = user.getId();
-                    String email = user.getEmail();
-                    String name = user.getName();
-                    String school = user.getName();
-
-                    Users users = new Users(id,email,name,school);
+                if (!response.isError()) {
+                    User user  = response.getUser();
+                    //int  id = user.getId();
+                    Users users = new Users(user.getId(),user.getEmail(),user.getName(),user.getSchool());
 
                     loginPresenter.onSucess(users);
 

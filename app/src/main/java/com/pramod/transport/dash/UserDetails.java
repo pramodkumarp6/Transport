@@ -15,7 +15,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
-import com.pramod.transport.LoginActivity;
+import com.pramod.transport.login.LoginActivity;
 import com.pramod.transport.R;
 import com.pramod.transport.databinding.ActivityUserDetailsBinding;
 import com.pramod.transport.model.signin.User;

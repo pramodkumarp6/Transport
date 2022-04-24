@@ -2,6 +2,8 @@ package com.pramod.transport.dash.fragments.framentmodel;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pramod.transport.app.RetrofitClient;
@@ -20,23 +22,27 @@ public class AccountModel implements AccountModelView {
     }
 
     @Override
-    public void validate(String id ,String email, String password, String name, String school) {
-        Log.e("id frag",id);
+    public void validate(String id ,String email, String name, String school) {
+
+
+
 
 
         accountPresenter.onShow();
-        Call<AccountResponse> call = RetrofitClient.getInstance().getApi().accountUpdate(id,email,password,name,school);
+        Call<AccountResponse> call = RetrofitClient.getInstance().getApi().accountUpdate(id,email,name,school);
         call.enqueue(new Callback<AccountResponse>() {
             @Override
-            public void onResponse(Call<AccountResponse> call, Response<AccountResponse> response) {
+            public void onResponse(@NonNull Call<AccountResponse> call, Response<AccountResponse> response) {
 
-                accountPresenter.onHide();
+                accountPresenter.onShow();
                 AccountResponse accountResponse = response.body();
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                Log.e("Json", gson.toJson(accountResponse));
+
 
                 if(!accountResponse.isError()){
-                    accountPresenter.onShow();
+                    accountPresenter.onHide();
+                    accountPresenter.onSucess(accountResponse.getMessage());
+                    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                    Log.e("Json", gson.toJson(accountResponse));
                 }else{
                     accountPresenter.onError(response.body().getMessage());
 

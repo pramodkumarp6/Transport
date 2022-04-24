@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+      <variable
+          name="users"
+          type="com.pramod.transport.dash.fragments.framentmodel.UsersInfoDetails" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAlignment="center"
+            android:text="@{users.id}"
+            android:textColor="@color/purple_500"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAlignment="center"
+            android:text="@{users.email}"
+            android:textColor="@color/purple_500"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+
+            android:layout_marginTop="5dp"
+            android:text="@{users.name}"
+            android:textColor="@color/purple_500"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+
+            android:layout_marginTop="5dp"
+            android:text="@{users.school}"
+            android:textColor="@color/purple_500"
+            android:textSize="25sp" />
+
+
+    </LinearLayout>
+
+
+</layout>

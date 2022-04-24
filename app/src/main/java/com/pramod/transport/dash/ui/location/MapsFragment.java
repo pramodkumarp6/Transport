@@ -61,7 +61,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         googleMap.setOnCameraMoveListener(new GoogleMap.OnCameraMoveListener() {
             @Override
             public void onCameraMove() {
-                Toast.makeText(getActivity(),"latLng"+latLng,Toast.LENGTH_LONG).show();
+               // Toast.makeText(getActivity(),"latLng"+latLng,Toast.LENGTH_LONG).show();
             }
         });
 

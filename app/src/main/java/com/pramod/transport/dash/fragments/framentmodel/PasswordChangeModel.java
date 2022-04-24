@@ -2,6 +2,8 @@ package com.pramod.transport.dash.fragments.framentmodel;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.pramod.transport.app.RetrofitClient;
 import com.pramod.transport.dash.fragments.fragementinterface.PasswordChangeModelView;
 import com.pramod.transport.dash.fragments.fragementpresenter.PasswordChangePresenter;
@@ -18,29 +20,40 @@ public class PasswordChangeModel implements PasswordChangeModelView {
         }
 
         @Override
-        public void validate(String email, String password) {
+        public void validate( String currentpassword,String newpassword,String email) {
+
+                Log.e(currentpassword,"currentpassword");
+                Log.e(newpassword,"newpassword");
                 Log.e(email,"email");
-                Log.e(password,"password");
+
 
                 if(email.isEmpty()){
                         passwordChangePresenter.onError("Enter email");
 
                         return;
                 }
-                if(password.isEmpty()){
-                        passwordChangePresenter.onError("Enter password");
+                if(currentpassword.isEmpty()){
+                        passwordChangePresenter.onError("Enter  Current Password");
+                        return;
+                }
+
+                if(newpassword.isEmpty()){
+                        passwordChangePresenter.onError("Enter  New Password");
                         return;
                 }
 
                 passwordChangePresenter.onShow();
-                Call<PasswordChangeResponse> call = RetrofitClient.getInstance().getApi().passwordChange(email,password);
+                Call<PasswordChangeResponse> call = RetrofitClient.getInstance().getApi().passwordChange(email,currentpassword,newpassword);
                 call.enqueue(new Callback<PasswordChangeResponse>() {
                         @Override
                         public void onResponse(Call<PasswordChangeResponse> call, Response<PasswordChangeResponse> response) {
                         PasswordChangeResponse passwordChangeResponse = response.body();
-                        if(passwordChangeResponse !=null){
+                        passwordChangePresenter.onHide();
+                        if(!passwordChangeResponse.isError()){
                                 passwordChangePresenter.onShow();
-
+                                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                                Log.e("UserDetailsFragment", gson.toJson(passwordChangeResponse));
+                                passwordChangePresenter.onSucess(response.body().getMessage());
                         }else {
                                 passwordChangePresenter.onError(response.body().getMessage());
 

@@ -11,16 +11,16 @@ public class PasswordChangePresenter implements PasswordChangePreseneterView {
     public PasswordChangePresenter(PasswordchangeView passwordchangeView) {
         this.passwordchangeView = passwordchangeView;
     }
-    public void passwordChange(String email, String password, String confirmpassword){
+    public void passwordChange( String currentpassword, String newpassword,String email){
         passwordChangeModel = new PasswordChangeModel(this);
-        passwordChangeModel.validate(email,password);
+        passwordChangeModel.validate(currentpassword,newpassword,email);
 
 
     }
 
     @Override
-    public void onSucess() {
-        passwordchangeView.onSucess();
+    public void onSucess(String msg) {
+        passwordchangeView.onSucess(msg);
 
     }
 

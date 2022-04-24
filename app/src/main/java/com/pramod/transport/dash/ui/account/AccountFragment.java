@@ -40,12 +40,11 @@ public class AccountFragment extends Fragment implements AccountView {
 
             final String id = String.valueOf(user.getId());
             final String email = fragmentAccountBinding.email.getText().toString().trim();
-            final String password = fragmentAccountBinding.password.getText().toString().trim();
             final String name = fragmentAccountBinding.name.getText().toString().trim();
             final String school = fragmentAccountBinding.school.getText().toString().trim();
 
             accountPresenter = new AccountPresenter(this);
-            accountPresenter.accountUpdate(id,email,password,name,school);
+            accountPresenter.accountUpdate(id,email,name,school);
         });
 
 
@@ -61,8 +60,8 @@ public class AccountFragment extends Fragment implements AccountView {
 
 
     @Override
-    public void onSucess() {
-        Toast.makeText(getActivity(), "Sucess", Toast.LENGTH_SHORT).show();
+    public void onSucess(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override

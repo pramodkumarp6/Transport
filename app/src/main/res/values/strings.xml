@@ -55,5 +55,7 @@
     <string name="textSize">Signup</string>
     <string name="edittext_school">School</string>
     <string name="Button_submit">Update</string>
+    <string name="current_password">CurrentPassword</string>
+    <string name="new_password">NewPassword</string>
 
 </resources>

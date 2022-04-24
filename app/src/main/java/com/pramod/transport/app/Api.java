@@ -32,17 +32,19 @@ public interface Api {
     Call<UserForgetResponse> userForget(@Field("email") String email);
 
     @FormUrlEncoded
-    @PUT("/simple/public/updateuser{id}")
+    @POST("/simple/public/updateuser/{id}")
     Call<AccountResponse> accountUpdate(@Path("id") String id,
                                         @Field("email") String email,
-                                        @Field("password") String password,
+
                                         @Field("name") String name,
                                         @Field("school") String school);
     @FormUrlEncoded
     @POST("/simple/public/updatepassword")
-    Call<PasswordChangeResponse> passwordChange(@Field("email") String email,
-                                                @Field("password") String password);
+    Call<PasswordChangeResponse> passwordChange(
+                                                @Field("currentpassword") String currentpassword,
+                                                @Field("newpassword") String newpassword,
+                                                @Field("email") String email);
 
      @GET("/simple/public/allusers")
-    Call<UsersDetailsResponse> userdetal();
+     Observable<UsersDetailsResponse> userdetails();
 }

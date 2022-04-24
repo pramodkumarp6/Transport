@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.pramod.transport.register.RegisterPresenter" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".register.RegisterActivity">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="135dp"
+            android:padding="10dp"
+            android:text="@string/string_name"
+            android:textColor="@color/purple_500"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="180dp"
+            android:background="@color/purple_200"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/round"
+                android:drawablePadding="5dp"
+                android:hint="@string/email"
+                android:importantForAutofill="no"
+                android:text="@={presenter.email}"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+
+                android:textColor="@color/purple_500"
+
+                />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/round"
+                android:drawablePadding="5dp"
+                android:fontFamily="sans-serif"
+                android:hint="@string/password"
+                android:importantForAutofill="no"
+                android:text="@={presenter.password}"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:paddingLeft="5dp"
+                android:textColor="@color/purple_500" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/round"
+                android:drawablePadding="5dp"
+                android:fontFamily="sans-serif"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:importantForAutofill="no"
+                android:text="@={presenter.name}"
+                android:padding="10dp"
+                android:paddingLeft="5dp"
+                android:textColor="@color/purple_500" />
+
+            <EditText
+                android:id="@+id/school"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/round"
+                android:drawablePadding="5dp"
+                android:fontFamily="sans-serif"
+                android:hint="@string/edittext_school"
+                android:importantForAutofill="no"
+                android:text="@={presenter.school}"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:paddingLeft="5dp"
+                android:textColor="@color/purple_500" />
+
+            <Button
+                android:id="@+id/updateButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/purple_500"
+                android:padding="10dp"
+                android:onClick="@{()->presenter.onRegister()}"
+                android:text="@string/Button_Text"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>
