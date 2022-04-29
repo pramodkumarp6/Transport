@@ -10,10 +10,12 @@ import android.net.NetworkInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.pramod.transport.R;
 import com.pramod.transport.databinding.RecyclerRowBinding;
 
@@ -21,21 +23,27 @@ public class ConnectionReciever extends BroadcastReceiver {
 
 
     private Context mContext;
+    private LinearLayout linearLayout;
     private @NonNull RecyclerRowBinding rowLayoutBinding;
+
 
     public ConnectionReciever(Context mContext) {
         this.mContext = mContext;
     }
+
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
         if (isConnected(context)) {
             Toast.makeText(context, "Internet Is Connected", Toast.LENGTH_SHORT).show();
-        } else {
-            //Toast.makeText(context, "Internet Is not Connected", Toast.LENGTH_SHORT).show();
 
-             showDialog();
+
+        } else {
+           Toast.makeText(context, "Internet Is  not Connected", Toast.LENGTH_SHORT).show();
+
+
+             //demo();
         }
 
     }
@@ -54,7 +62,7 @@ public class ConnectionReciever extends BroadcastReceiver {
 
     }
 
-    public void showDialog() {
+    private void demo() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

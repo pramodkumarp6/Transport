@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.pramod.transport.R;
 import com.pramod.transport.dash.fragments.framentmodel.UsersInfoDetails;
 import com.pramod.transport.dash.ui.userDetails.UsersDetailsFragment;
 import com.pramod.transport.databinding.RecyclerRowBinding;
@@ -32,7 +34,8 @@ public class UserInfoAdapter extends RecyclerView.Adapter<UserInfoAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        RecyclerRowBinding recyclerRowBinding = RecyclerRowBinding.inflate(layoutInflater, parent, false);
+        RecyclerRowBinding recyclerRowBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
+                R.layout.recycler_row, parent, false);
         return new ViewHolder(recyclerRowBinding);
     }
 

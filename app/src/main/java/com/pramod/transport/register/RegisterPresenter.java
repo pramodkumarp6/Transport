@@ -35,10 +35,7 @@ public class RegisterPresenter implements RegisterPreseneterView {
 
     public void onRegister() {
 
-        Log.d(email.get(), "email");
-        Log.e(password.get(), "password");
-        Log.e(name.get(), "name");
-        Log.d(school.get(), "school");
+
         registerModel = new RegisterModel(this);
         registerModel.validate(email.get(), password.get(), name.get(), school.get());
 

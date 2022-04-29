@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -15,6 +15,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.pramod.transport.databinding.NavHeaderUserDetailsBinding;
 import com.pramod.transport.login.LoginActivity;
 import com.pramod.transport.R;
 import com.pramod.transport.databinding.ActivityUserDetailsBinding;
@@ -25,25 +26,39 @@ public class UserDetails extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityUserDetailsBinding binding;
+    private NavHeaderUserDetailsBinding navBinding;
     private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_user_details);
 
-        binding = ActivityUserDetailsBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        //navBinding = NavHeaderUserDetailsBinding.bind(binding.navView.getHeaderView(0));
+
+        navBinding = DataBindingUtil.inflate(getLayoutInflater(),R.layout.nav_header_user_details, binding.navView,false);
+
+
+
+         user = SharedPrefManager.getInstance(this).getUser();
+        View view = binding.navView.getHeaderView(0);
+
+        // binding.navView.addHeaderView(navBinding.getRoot());
+         navBinding = NavHeaderUserDetailsBinding.bind(view);
+
+         NaviHeaderUser naviHeaderUser = new NaviHeaderUser();
+         naviHeaderUser.setEmail(user.getEmail());
+         naviHeaderUser.setName(user.getName());
+         naviHeaderUser.setImageUrl("https://via.placeholder.com/300.png");
+         navBinding.setUserNaviHeader(naviHeaderUser);
+
+
 
         setSupportActionBar(binding.appBarUserDetails.toolbars);
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         navigationView.setItemIconTintList(null);
-      //
-
-
-
-
 
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -57,20 +72,7 @@ public class UserDetails extends AppCompatActivity {
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_user_details);
-
-        User user = SharedPrefManager.getInstance(this).getUser();
-
-
-        View hView = navigationView.getHeaderView(0);
-        TextView nav_user = (TextView) hView.findViewById(R.id.textViewtitle);
-        nav_user.setText(user.getName());
-        TextView nav_user1 = (TextView) hView.findViewById(R.id.textViewsubtitle);
-        nav_user1.setText(user.getEmail());
-
-
-
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
@@ -81,7 +83,7 @@ public class UserDetails extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.user_details, menu);
+        getMenuInflater().inflate(R.menu.partial_menu_sample_view, menu);
         return true;
     }
     @Override

@@ -32,11 +32,13 @@ public class UsersDetailsPresenter implements UserDetailsPresenterView {
 
     @Override
     public void onHide() {
+        usersDetailsView.onHide();
 
     }
 
     @Override
     public void onShow() {
+        usersDetailsView.onShow();
 
     }
 }

@@ -19,60 +19,44 @@ import com.pramod.transport.login.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity  {
     private ActivitySplashBinding splashBinding;
-    private BroadcastReceiver broadcastReceiver;
+
 
     @Override
     protected void onCreate(@NonNull Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        splashBinding = DataBindingUtil.setContentView(this,R.layout.activity_splash);
+        splashBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
         getSupportActionBar().hide();
 
-        broadcastReceiver = new ConnectionReciever(this);
-        registerNetworkBroadcast();
+        splash();
 
 
-       Thread t = new Thread() {
-            public void run() {
+    }
+        public void splash () {
 
-                try {
+        Thread t = new Thread() {
+                public void run() {
 
-                    sleep(1000);
+                    try {
 
-                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                    //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
+                        sleep(1000);
+
+                        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
 
 
-                    finish();
+                        finish();
 
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        };
+            };
 
 
-        t.start();
-    }
-
- protected  void registerNetworkBroadcast(){
-        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.N){
-            registerReceiver(broadcastReceiver,new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+            t.start();
         }
- }
 
- protected  void unregisterNetwork(){
-        try{
-           unregisterReceiver(broadcastReceiver);
-        }catch (IllegalArgumentException e){
-            e.printStackTrace();
 
-        }
- }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterNetwork();
-    }
 }

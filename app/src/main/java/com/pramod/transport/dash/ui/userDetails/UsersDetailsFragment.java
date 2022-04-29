@@ -1,5 +1,10 @@
 package com.pramod.transport.dash.ui.userDetails;
 
+import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,10 +19,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pramod.transport.adapter.UserInfoAdapter;
+import com.pramod.transport.app.ConnectionReciever;
 import com.pramod.transport.dash.fragments.fragementinterface.UsersDetailsView;
 import com.pramod.transport.dash.fragments.fragementpresenter.UsersDetailsPresenter;
 import com.pramod.transport.dash.fragments.framentmodel.UsersInfoDetails;
 import com.pramod.transport.databinding.FragmentUsersDetailsBinding;
+import com.pramod.transport.login.LoginActivity;
 
 import java.util.List;
 
@@ -31,6 +38,8 @@ public  class UsersDetailsFragment extends Fragment implements UsersDetailsView 
    private UsersDetailsPresenter usersDetailsPresenter;
    private UserInfoAdapter userInfoAdapter;
    private List<UsersInfoDetails> users;
+    private BroadcastReceiver broadcastReceiver;
+    private ProgressDialog progressDialog;
 
 
 
@@ -42,6 +51,10 @@ public  class UsersDetailsFragment extends Fragment implements UsersDetailsView 
                              Bundle savedInstanceState) {
         fragmentUsersDetailsBinding = FragmentUsersDetailsBinding.inflate(inflater, container, false);
         view = fragmentUsersDetailsBinding.getRoot();
+       // broadcastReceiver = new ConnectionReciever(getActivity());
+        //registerNetworkBroadcast();
+
+        progressDialog = new ProgressDialog(getActivity());
 
         fragmentUsersDetailsBinding.recylerView.setLayoutManager(new LinearLayoutManager(getContext()));
         userInfoAdapter = new UserInfoAdapter(getContext(),users);
@@ -49,10 +62,26 @@ public  class UsersDetailsFragment extends Fragment implements UsersDetailsView 
 
         usersDetailsPresenter = new UsersDetailsPresenter(this);
 
-
+           progressDialog.setMessage(" please Loding...");
 
         return view;
     }
+    /*protected  void registerNetworkBroadcast(){
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.N){
+            getActivity().registerReceiver(broadcastReceiver,new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }*/
+
+    /*protected  void unregisterNetwork(){
+        try{
+            getActivity().unregisterReceiver(broadcastReceiver);
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+
+        }
+    }
+*/
+
 
     @Override
     public void onSucess(List<UsersInfoDetails> usersInfoDetails) {
@@ -65,6 +94,7 @@ public  class UsersDetailsFragment extends Fragment implements UsersDetailsView 
 
     }
 
+
     @Override
     public void onError(String msg) {
 
@@ -73,16 +103,20 @@ public  class UsersDetailsFragment extends Fragment implements UsersDetailsView 
 
     @Override
     public void onHide() {
+        progressDialog.dismiss();
 
     }
 
     @Override
     public void onShow() {
+        progressDialog.show();
 
     }
+
 
     public void onDestroyView() {
         super.onDestroyView();
         fragmentUsersDetailsBinding = null;
     }
+
 }

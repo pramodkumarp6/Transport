@@ -1,6 +1,7 @@
 package com.pramod.transport.dash.ui.account;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.pramod.transport.R;
 import com.pramod.transport.dash.fragments.fragementinterface.AccountView;
 import com.pramod.transport.dash.fragments.fragementpresenter.AccountPresenter;
 import com.pramod.transport.databinding.FragmentAccountBinding;
@@ -23,34 +26,15 @@ public class AccountFragment extends Fragment implements AccountView {
     private FragmentAccountBinding fragmentAccountBinding;
     private ProgressDialog progressDialog;
     private AccountPresenter accountPresenter;
+    private Account account;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        fragmentAccountBinding = FragmentAccountBinding.inflate(inflater, container, false);
+        fragmentAccountBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_account,container, false);
+
         View view = fragmentAccountBinding.getRoot();
-        User user = SharedPrefManager.getInstance(getActivity()).getUser();
-        fragmentAccountBinding.name.setText(user.getName());
-        fragmentAccountBinding.email.setText(user.getEmail());
-        fragmentAccountBinding.school.setText(user.getSchool());
-
-        fragmentAccountBinding.updateButton.setOnClickListener(view1 -> {
-
-
-
-
-            final String id = String.valueOf(user.getId());
-            final String email = fragmentAccountBinding.email.getText().toString().trim();
-            final String name = fragmentAccountBinding.name.getText().toString().trim();
-            final String school = fragmentAccountBinding.school.getText().toString().trim();
-
-            accountPresenter = new AccountPresenter(this);
-            accountPresenter.accountUpdate(id,email,name,school);
-        });
-
-
-
-      //
-
+        accountPresenter = new AccountPresenter(this,new Account(),getActivity());
+        fragmentAccountBinding.setPresenter(accountPresenter);
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Please wait...");
